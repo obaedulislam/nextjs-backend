@@ -1,4 +1,5 @@
-import User from "@/app/models/User";
+// import UserList from "@/app/models/UserList";
+import UserList from "@/app/models/UserList";
 import { connectDB } from "@/lib/db";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
@@ -11,14 +12,17 @@ export interface IUser {
 
 export async function POST(req: Request) {
 	await connectDB();
-	console.log(req?.body?.getReader);
 	const { name, email, password }: IUser = await req.json();
 
-	const existingUser = await User.findOne({ email });
+	const existingUser = await UserList.findOne({ email });
 	if (existingUser) {
 		return NextResponse.json({ error: "User already Exists" }, { status: 400 });
 	}
 	const hashedPassword = await bcrypt.hash(password, 10);
-	const newUser = await User.create({ name, email, password: hashedPassword });
+	const newUser = await UserList.create({
+		name,
+		email,
+		password: hashedPassword,
+	});
 	return NextResponse.json({ user: newUser });
 }
