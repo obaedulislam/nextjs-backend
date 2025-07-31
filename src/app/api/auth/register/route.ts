@@ -1,4 +1,3 @@
-// import UserList from "@/app/models/UserList";
 import UserList from "@/app/models/UserList";
 import { connectDB } from "@/lib/db";
 import bcrypt from "bcrypt";
