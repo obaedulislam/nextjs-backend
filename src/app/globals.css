@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-	--background: #333333;
+	/* --background: #333333; */
 }
 .dark {
-	@apply bg-black;
+	@apply bg-no-repeat bg-cover h-full;
+	background-image: radial-gradient(
+		125% 125% at 50% 100%,
+		#000000 40%,
+		#010133 100%
+	);
 }

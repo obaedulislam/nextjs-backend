@@ -23,5 +23,6 @@ export async function POST(req: Request) {
 		email,
 		password: hashedPassword,
 	});
+	console.log(newUser);
 	return NextResponse.json({ user: newUser });
 }
